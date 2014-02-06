@@ -23,10 +23,10 @@ end
 -- START draw health---------------------------------------
 -----------------------------------------------------------
 function health()
-local w = hud.w - hud.w * .1
-local h = hud.h * .25
-local x = hud.x + hud.x * .25
-local y = hud.y + hud.y * .25
+	local w = hud.w - hud.w * .1
+	local h = hud.h * .25
+	local x = hud.x + hud.x * .25
+	local y = hud.y + hud.y * .25
 	love.graphics.rectangle("line", x, y, w, h)
 	--love.graphics.rectangle("fill", hud.x + ((hud.x * .05) * 2), hud.y + ((hud.y * .05) * 2), (hud.w * .9) * .9, (hud.h * .25) * .25)
 end

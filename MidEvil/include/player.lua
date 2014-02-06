@@ -36,7 +36,10 @@ function p1:move(dt)
 	elseif p1.sprint == false and p1.stam < 100 then
 		p1.stam = p1.stam + 5 * dt
 	end
-	if p1.stam < 0 then p1.stam = 0 end
+	if p1.stam < 0 then
+		p1.stam = 0
+		p1.v = p1.vOld
+	end
 	if p1.stam > 100 then p1.stam = 100 end
 	-----------------------------------------------------------
     -- END sprint control--------------------------------------
