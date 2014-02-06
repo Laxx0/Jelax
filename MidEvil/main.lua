@@ -6,7 +6,7 @@ require 'include.hud'
 -------------------------------------------------------------------------------
 
 function love.load()
-	cam = gamera.new(0,0,3200,3200)
+	cam = gamera.new(0,0,mapWidth,mapHeight)
 end
 
 
