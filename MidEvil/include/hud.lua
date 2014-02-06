@@ -1,19 +1,21 @@
 -----------------------------------------------------------
 -- START draw hud------------------------------------------
 -----------------------------------------------------------
-hud = {x = 20, y = 20, w = 100, h = 60}
+hud = {x = 10, y = 10, w = 100, h = 60}
 
 function hud_draw()
-	--border()
-	--health()
+	border()
+	health()
 	stamina()
+	utility()
 end
 
 -----------------------------------------------------------
 -- START draw border---------------------------------------
 -----------------------------------------------------------
 function border()
-	love.graphics.rectangle("line", hud.x, hud.y, hud.w, hud.h)
+	love.graphics.setColor(0,0,0,75)
+	love.graphics.rectangle("fill", hud.x, hud.y, hud.w, hud.h)
 end
 -----------------------------------------------------------
 -- END draw border-----------------------------------------
@@ -25,10 +27,11 @@ end
 function health()
 	local w = hud.w - hud.w * .1
 	local h = hud.h * .25
-	local x = hud.x + hud.x * .25
-	local y = hud.y + hud.y * .25
+	local x = hud.x + ((hud.w - w) / 2)
+	local y = hud.y + ((hud.h - h) / 2) - (h + (hud.h * .05))
+	love.graphics.setColor(255,0,0)
 	love.graphics.rectangle("line", x, y, w, h)
-	--love.graphics.rectangle("fill", hud.x + ((hud.x * .05) * 2), hud.y + ((hud.y * .05) * 2), (hud.w * .9) * .9, (hud.h * .25) * .25)
+	love.graphics.rectangle("fill", x, y, w * p1.health * .01, h)
 end
 -----------------------------------------------------------
 -- END draw health-----------------------------------------
@@ -38,18 +41,31 @@ end
 -- START draw stamina--------------------------------------
 -----------------------------------------------------------
 function stamina()
-	love.graphics.rectangle("line", 20, love.window.getHeight() - 60, 110, 30)
-	love.graphics.rectangle("fill", 25, love.window.getHeight() - 55, p1.stam, 20)
-	love.graphics.line(50, love.window.getHeight() - 60, 50, love.window.getHeight() - 55)
-	love.graphics.line(50, love.window.getHeight() - 30, 50, love.window.getHeight() - 35)
-	love.graphics.line(75, love.window.getHeight() - 60, 75, love.window.getHeight() - 55)
-	love.graphics.line(75, love.window.getHeight() - 30, 75, love.window.getHeight() - 35)
-	love.graphics.line(100, love.window.getHeight() - 60, 100, love.window.getHeight() - 55)
-	love.graphics.line(100, love.window.getHeight() - 30, 100, love.window.getHeight() - 35)
-	love.graphics.printf(math.ceil(p1.stam), 71, love.window.getHeight() - 25, 3, "center")
+	local w = hud.w - hud.w * .1
+	local h = hud.h * .25
+	local x = hud.x + ((hud.w - w) / 2)
+	local y = hud.y + ((hud.h - h) / 2)
+	love.graphics.setColor(0,255,0)
+	love.graphics.rectangle("line", x, y, w, h)
+	love.graphics.rectangle("fill", x, y, w * p1.stam * .01, h)
 end
 -----------------------------------------------------------
 -- END draw stamina----------------------------------------
+-----------------------------------------------------------
+
+-----------------------------------------------------------
+-- START draw utility---------------------------------------
+-----------------------------------------------------------
+function utility()
+	local w = hud.w - hud.w * .1
+	local h = hud.h * .25
+	local x = hud.x + ((hud.w - w) / 2)
+	local y = hud.y + ((hud.h - h) / 2) + (h + (hud.h * .05))
+	love.graphics.setColor(255,255,0)
+	love.graphics.rectangle("line", x, y, w, h)
+end
+-----------------------------------------------------------
+-- END draw health-----------------------------------------
 -----------------------------------------------------------
 -----------------------------------------------------------
 -- END draw hud--------------------------------------------
