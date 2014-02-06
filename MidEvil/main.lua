@@ -2,6 +2,7 @@ gamera = require 'include.gamera'
 tilecollider = require 'include.tilecollider'
 require 'include.map'
 require 'include.player'
+require 'include.hud'
 -------------------------------------------------------------------------------
 
 function love.load()
@@ -21,4 +22,6 @@ function love.draw()
 	map_draw()
 	p1:draw('fill')
 	end)
+	hud_draw()
+	love.graphics.print("Speed: " .. p1.v, 20, 20) -- debug
 end
