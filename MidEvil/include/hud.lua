@@ -47,6 +47,8 @@ function stamina()
 	local y = hud.y + ((hud.h - h) / 2)
 	love.graphics.setColor(0,255,0)
 	love.graphics.rectangle("line", x, y, w, h)
+	love.graphics.line(x + w / 2, y, x + w / 2, y + h /4)
+	love.graphics.line(x + w / 2, y + h, x + w / 2, y + h - h /4)
 	love.graphics.rectangle("fill", x, y, w * p1.stam * .01, h)
 end
 -----------------------------------------------------------
