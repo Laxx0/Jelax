@@ -10,7 +10,8 @@ function love.load()
 	cam = gamera.new(0,0,mapWidth,mapHeight)
 	love.keyboard.setKeyRepeat( enable )
 	backspacedtcount = 0
-	text = ">"
+	text = ""
+	Game.game = true --Set game state to game true by default. Should be menu
 end
 
 function love.textinput(t)
@@ -18,8 +19,10 @@ function love.textinput(t)
 end
 
 function love.update(dt)
-	p1:move(dt)
-	cam:setPosition(p1.x, p1.y)
+	if Game.game then
+		p1:move(dt)
+		cam:setPosition(p1.x, p1.y)
+	end
 	if Game.menu then
         	back = love.keyboard.isDown( "backspace" )
         	if back and backspacedtcount > 0.10 then
@@ -33,12 +36,13 @@ end
 
 
 function love.draw()
-
-	cam:draw(function(l,t,w,h)
-	map_draw()
-	p1:draw('fill')
-	end)
-	hud_draw()
+	if Game.game then
+		cam:draw(function(l,t,w,h)
+		map_draw()
+		p1:draw('fill')
+		end)
+		hud_draw()
+	end
 	--love.graphics.print("Speed: " .. p1.v, 20, 20) -- debug
 	--love.graphics.print(text, 20, 30) -- debug
 end
