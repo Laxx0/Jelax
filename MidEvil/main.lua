@@ -40,5 +40,5 @@ function love.draw()
 	end)
 	hud_draw()
 	--love.graphics.print("Speed: " .. p1.v, 20, 20) -- debug
-	love.graphics.print(text, 20, 30) -- debug
+	--love.graphics.print(text, 20, 30) -- debug
 end

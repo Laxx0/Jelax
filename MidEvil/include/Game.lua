@@ -1,5 +1,5 @@
 Game = {}
-Game = {	menu = true, 
+Game = {	menu = false, 
 		game = false 
 		}
 
