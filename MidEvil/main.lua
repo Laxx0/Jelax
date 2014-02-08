@@ -25,9 +25,13 @@ function love.update(dt)
 		cam:setPosition(p1.x, p1.y)
 		if love.keyboard.isDown(".") then
 			love.window.setMode( 1000, 600 )
+			cam.w = 1000
+			cam.h = 600
 		end
 		if love.keyboard.isDown("/") then
 			love.window.setMode( 800, 600 )
+			cam.w = 800
+			cam.h = 600
 		end
 	end
 	if Game.menu then
