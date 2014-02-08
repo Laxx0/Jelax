@@ -7,6 +7,7 @@ require 'include.Game'
 -------------------------------------------------------------------------------
 
 function love.load()
+	love.window.setMode(800, 600, {resizable=true, vsync=false, minwidth=800, minheight=600})
 	cam = gamera.new(0,0,mapWidth,mapHeight)
 	love.keyboard.setKeyRepeat( enable )
 	backspacedtcount = 0
@@ -22,6 +23,12 @@ function love.update(dt)
 	if Game.game then
 		p1:move(dt)
 		cam:setPosition(p1.x, p1.y)
+		if love.keyboard.isDown(".") then
+			love.window.setMode( 1000, 600 )
+		end
+		if love.keyboard.isDown("/") then
+			love.window.setMode( 800, 600 )
+		end
 	end
 	if Game.menu then
         	back = love.keyboard.isDown( "backspace" )
