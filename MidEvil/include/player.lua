@@ -1,11 +1,11 @@
 -----------------------------------------------------------
 -- START create player-------------------------------------
 -----------------------------------------------------------
-moveLeft = love.graphics.newQuad(23, 20, 32, 64, 587, 304)
-moveRight = love.graphics.newQuad(23, 20, 32, 64, 587, 304)
-moveUp = love.graphics.newQuad(23, 117, 32, 64, 587, 304)
-moveDown = love.graphics.newQuad(23, 207, 32, 64, 587, 304)
-p1  = {img = love.graphics.newImage("include/media/player.png"), d = moveDown, x = 128,y = 128, w = 32, h = 64, health = 100, stam = 100, v = 75, vOld = 75, sprint = false, lBound = 128, tBound = 128, rBound = mapWidth - 128 - 32, bBound = mapHeight - 128 - 64}
+moveLeft = love.graphics.newQuad(21, 20, 32, 64, 587, 304)
+moveRight = love.graphics.newQuad(25, 20, 32, 64, 587, 304)
+moveUp = love.graphics.newQuad(19, 117, 32, 64, 587, 304)
+moveDown = love.graphics.newQuad(21, 207, 32, 64, 587, 304)
+p1  = {img = love.graphics.newImage("include/media/player.png"), d = moveDown, x = 128,y = 128, w = 32, h = 64, health = 100, stam = 100, v = 75, vOld = 75, sprint = false, lBound = 128, tBound = 128, rBound = mapWidth - 128 - 32, bBound = mapHeight - 128 - 64, drawBoundBox = false}
 
 -----------------------------------------------------------
 -- END create player---------------------------------------
@@ -16,8 +16,10 @@ function p1:unpack()
 end
 
 function p1:draw()
-	--[[love.graphics.setColor(255,255,0)
-	love.graphics.rectangle('fill',self:unpack())]]--
+	if p1.drawBoundBox == true then
+		love.graphics.setColor(255,255,0)
+		love.graphics.rectangle('fill',self:unpack())
+	end
 	love.graphics.setColor(255,255,255)
 	if p1.d == moveRight then
 		love.graphics.draw(p1.img, p1.d, p1.x, p1.y, nil, -1, 1, 25)

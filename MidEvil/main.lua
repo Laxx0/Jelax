@@ -12,6 +12,7 @@ function love.load()
 	love.keyboard.setKeyRepeat( enable )
 	backspacedtcount = 0
 	text = ""
+	debugText = "\"/\" 800x600 resolution \n\".\" 1000x600 resolution\n\"space\" toggle bounding box\n\"shift\" sprint"
 	Game.game = true --Set game state to game true by default. Should be menu
 end
 
@@ -56,4 +57,13 @@ function love.draw()
 	end
 	--love.graphics.print("Speed: " .. p1.v, 20, 20) -- debug
 	--love.graphics.print(text, 20, 30) -- debug
+	love.graphics.print(debugText, 20, 200) -- debug
+end
+
+function love.keypressed(key)
+	if key == " " and p1.drawBoundBox == false then
+		p1.drawBoundBox = true
+	elseif key == " " and p1.drawBoundBox == true then
+		p1.drawBoundBox = false
+	end
 end
